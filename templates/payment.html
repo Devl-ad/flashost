@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/v2/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="https://www.fxvps.pro/favicon.ico" />
+
+    <!-- Styling -->
+    <link href="/assets/css/v2/overrides.css" rel="stylesheet" />
+    <link href="/assets/css/v2/styles.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="/assets/js/v2/jquery.min.js"></script>
+
+    <!-- Flathost Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/flathost.css" />
+
+    <!--==== GOOGLE FONT =======-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      .payment-page {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      .payment-page-header {
+        margin-bottom: 28px;
+      }
+
+      .payment-page-header h1 {
+        font-size: 34px;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 8px;
+      }
+
+      .payment-page-header p {
+        color: #6b7280;
+        font-size: 15px;
+        margin-bottom: 0;
+      }
+
+      .payment-layout {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .modern-panel,
+      .payment-card {
+        border-radius: 14px;
+        border: 1px solid #e9edf3;
+        box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06);
+        overflow: hidden;
+        background: #fff;
+        margin-bottom: 24px;
+      }
+
+      .modern-panel .panel-heading {
+        background: #ffffff;
+        border-bottom: 1px solid #eef2f7;
+        padding: 18px 22px;
+      }
+
+      .modern-panel .panel-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1f2937;
+      }
+
+      .modern-panel .panel-title i {
+        margin-right: 8px;
+        color: #16a34a;
+      }
+
+      .no-padding {
+        padding: 0 !important;
+      }
+
+      .summary-table-head {
+        background: #f8fafc;
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 14px 22px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        border-bottom: 1px solid #eef2f7;
+      }
+
+      .summary-row {
+        padding: 18px 22px;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      .summary-row:last-child {
+        border-bottom: none;
+      }
+
+      .summary-product-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 3px;
+      }
+
+      .summary-product-meta {
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      .summary-value {
+        font-size: 14px;
+        color: #374151;
+        line-height: 24px;
+      }
+
+      .summary-price {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111827;
+        line-height: 24px;
+      }
+
+      .summary-footer {
+        background: #fcfcfd;
+        padding: 18px 22px;
+        border-top: 1px solid #eef2f7;
+      }
+
+      .summary-total-label {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .summary-total-amount {
+        font-size: 28px;
+        font-weight: 800;
+        color: #15803d;
+      }
+
+      .receipt-info {
+        padding: 18px 22px;
+      }
+
+      .receipt-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 11px 0;
+        border-bottom: 1px dashed #e5e7eb;
+      }
+
+      .receipt-row:last-child {
+        border-bottom: none;
+      }
+
+      .receipt-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: #374151;
+        min-width: 110px;
+      }
+
+      .receipt-value {
+        font-size: 14px;
+        font-weight: 500;
+        color: #111827;
+        text-align: right;
+        word-break: break-word;
+      }
+
+      .receipt-divider {
+        height: 1px;
+        background: #eef2f7;
+        margin: 14px 0;
+      }
+
+      .payment-sidebar {
+        position: sticky;
+        top: 24px;
+      }
+
+      .payment-card {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fffb 100%);
+      }
+
+      .payment-card-top {
+        padding: 24px;
+        text-align: center;
+      }
+
+      .payment-badge {
+        display: inline-block;
+        background: #e8f7ee;
+        color: #15803d;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 8px 14px;
+        margin-bottom: 20px;
+      }
+
+      .payment-amount-label {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #64748b;
+        margin-bottom: 8px;
+      }
+
+      .payment-amount {
+        font-size: 38px;
+        line-height: 1.1;
+        font-weight: 800;
+        color: #166534;
+        margin-bottom: 14px;
+      }
+
+      .payment-helper {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 24px;
+        line-height: 1.6;
+      }
+
+      .payment-btn {
+        width: 100%;
+        border-radius: 12px;
+        padding: 15px 20px;
+        font-size: 18px;
+        font-weight: 700;
+        border: none;
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: #fff;
+        box-shadow: 0 12px 24px rgba(34, 197, 94, 0.24);
+        transition: all 0.2s ease;
+      }
+
+      .payment-btn:hover,
+      .payment-btn:focus {
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 16px 28px rgba(34, 197, 94, 0.28);
+      }
+
+      .payment-methods {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .payment-methods span {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: #475569;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .payment-card-bottom {
+        border-top: 1px solid #eef2f7;
+        padding: 16px 20px;
+        background: #ffffff;
+      }
+
+      .mini-note {
+        font-size: 13px;
+        color: #64748b;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .summary-mobile-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #94a3b8;
+        margin-bottom: 4px;
+      }
+
+      @media (max-width: 991px) {
+        .payment-sidebar {
+          position: static;
+          top: auto;
+        }
+
+        .payment-page-header h1 {
+          font-size: 28px;
+        }
+
+        .payment-amount {
+          font-size: 32px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .summary-row {
+          padding: 16px 18px;
+        }
+
+        .modern-panel .panel-heading {
+          padding: 16px 18px;
+        }
+
+        .receipt-info {
+          padding: 16px 18px;
+        }
+
+        .receipt-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+        }
+
+        .receipt-value {
+          text-align: left;
+        }
+      }
+    </style>
+    <style>
+      /* MOBILE PAYMENT PAGE */
+      @media (max-width: 768px) {
+        body {
+          background: #f7f8fa;
+        }
+        .payment-layout {
+          align-items: center;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* page header */
+        .payment-page-header h1 {
+          font-size: 28px;
+          line-height: 1.2;
+          margin-bottom: 8px;
+        }
+
+        .payment-page-header p {
+          font-size: 15px;
+          color: #6b7280;
+        }
+
+        /* cards */
+        .modern-panel,
+        .payment-card {
+          border-radius: 18px;
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+          margin-bottom: 18px;
+        }
+
+        .panel-heading {
+          padding: 16px 18px;
+        }
+
+        .panel-title {
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+        /* summary rows */
+        .summary-row {
+          padding: 16px 18px;
+        }
+
+        .summary-product-name {
+          font-size: 17px;
+          font-weight: 700;
+        }
+
+        .summary-product-meta {
+          font-size: 13px;
+          color: #6b7280;
+        }
+
+        .summary-value {
+          font-size: 16px;
+        }
+
+        .summary-price {
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+        /* total */
+        .summary-total-label {
+          font-size: 18px;
+        }
+
+        .summary-total-amount {
+          font-size: 26px;
+          font-weight: 800;
+          color: #15803d;
+        }
+
+        /* customer receipt */
+        .receipt-row {
+          padding: 14px 0;
+        }
+
+        .receipt-label {
+          font-size: 14px;
+          font-weight: 700;
+          color: #4b5563;
+        }
+
+        .receipt-value {
+          font-size: 16px;
+          font-weight: 500;
+          color: #111827;
+          margin-top: 3px;
+        }
+
+        /* order id wrap */
+        .receipt-value {
+          word-break: break-word;
+        }
+
+        /* payment card */
+        .payment-card-top {
+          padding: 22px;
+        }
+
+        .payment-amount {
+          font-size: 34px;
+          margin-bottom: 10px;
+        }
+
+        .payment-helper {
+          font-size: 14px;
+        }
+
+        /* pay button */
+        .payment-btn {
+          width: 100%;
+          font-size: 18px;
+          padding: 16px;
+          border-radius: 14px;
+        }
+
+        /* payment badges */
+        .payment-methods span {
+          font-size: 11px;
+          padding: 6px 10px;
+        }
+      }
+    </style>
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/custom.css" />
+  </head>
+  <body>
+    <!--===== FLATHOST NAVIGATION ====/index.php==-->
+
+    <section id="main-body" class="container payment-page">
+      <div class="row">
+        <div class="col-xs-12 main-content">
+          <div id="order-standard_cart">
+            <div class="payment-page-header text-center">
+              <h1>Complete Your Payment</h1>
+              <p>Review your order and proceed with secure checkout</p>
+            </div>
+
+            <div class="row payment-layout">
+              <!-- LEFT SIDE -->
+              <div class="col-md-8">
+                <div class="panel panel-default modern-panel summary-panel">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <i class="fa fa-shopping-bag"></i>
+                      Order Summary
+                    </h3>
+                  </div>
+
+                  <div class="panel-body no-padding">
+                    <div class="summary-table-head hidden-xs">
+                      <div class="row">
+                        <div class="col-sm-5">Product</div>
+                        <div class="col-sm-3">Billing Cycle</div>
+                        <div class="col-sm-2 text-center">Qty</div>
+                        <div class="col-sm-2 text-right">Price</div>
+                      </div>
+                    </div>
+
+                    {% for item in order.items.all %}
+                    <div class="summary-row">
+                      <div class="row">
+                        <div class="col-sm-5 col-xs-12">
+                          <div class="summary-product">
+                            <div class="summary-product-name">
+                              {{ item.package.name }}
+                            </div>
+                            <div class="summary-product-meta">
+                              {{ item.package.category }}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-3 col-xs-6">
+                          <div class="summary-mobile-label visible-xs">
+                            Billing Cycle
+                          </div>
+                          <div class="summary-value">
+                            {% if item.billing_cycle == "1m" %}
+                            <!--  -->
+                            Monthly
+                            <!--  -->
+                            {% elif item.billing_cycle == "3m" %}
+                            <!--  -->
+                            Quarterly
+                            <!--  -->
+                            {% elif item.billing_cycle == "6m" %}
+                            <!--  -->
+                            Semi-Annual
+                            <!--  -->
+                            {% elif item.billing_cycle == "12m" %}
+                            <!--  -->
+                            Annual
+                            <!--  -->
+                            {% elif item.billing_cycle == "24m" %}
+                            <!--  -->
+                            Biennial
+                            <!--  -->
+                            {% else %}
+                            <!--  -->
+                            {{ item.billing_cycle }}
+                            <!--  -->
+                            {% endif %}
+                          </div>
+                        </div>
+
+                        <div class="col-sm-2 col-xs-3 text-center">
+                          <div class="summary-mobile-label visible-xs">Qty</div>
+                          <div class="summary-value">{{ item.quantity }}</div>
+                        </div>
+
+                        <div class="col-sm-2 col-xs-3 text-right">
+                          <div class="summary-mobile-label visible-xs">
+                            Price
+                          </div>
+                          <div class="summary-price">
+                            ${{ item.unit_price }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+
+                  <div class="panel-footer summary-footer">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <span class="summary-total-label">Total</span>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <span class="summary-total-amount"
+                          >${{ order.total_amount }} {{ order.currency }}</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default modern-panel customer-panel">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <i class="fa fa-user"></i>
+                      Customer Information
+                    </h3>
+                  </div>
+
+                  <div class="panel-body receipt-info">
+                    <div class="receipt-row">
+                      <span class="receipt-label">Order ID</span>
+                      <span class="receipt-value">#{{ order.id }}</span>
+                    </div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">Name</span>
+                      <span class="receipt-value"
+                        >{{ order.first_name }} {{ order.last_name }}</span
+                      >
+                    </div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">Email</span>
+                      <span class="receipt-value">{{ order.email }}</span>
+                    </div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">Phone</span>
+                      <span class="receipt-value">{{ order.phone }}</span>
+                    </div>
+
+                    <div class="receipt-divider"></div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">Address</span>
+                      <span class="receipt-value">{{ order.address_1 }}</span>
+                    </div>
+
+                    {% if order.address_2 %}
+                    <div class="receipt-row">
+                      <span class="receipt-label">Address 2</span>
+                      <span class="receipt-value">{{ order.address_2 }}</span>
+                    </div>
+                    {% endif %}
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">City</span>
+                      <span class="receipt-value">{{ order.city }}</span>
+                    </div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">State</span>
+                      <span class="receipt-value">{{ order.state }}</span>
+                    </div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">Postcode</span>
+                      <span class="receipt-value">{{ order.postcode }}</span>
+                    </div>
+
+                    <div class="receipt-row">
+                      <span class="receipt-label">Country</span>
+                      <span class="receipt-value">{{ order.country }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT SIDE -->
+              <div class="col-md-4">
+                <div class="payment-sidebar">
+                  <div class="panel payment-card">
+                    <div class="payment-card-top">
+                      <div class="payment-badge">
+                        <i class="fa fa-lock"></i> Secure Payment
+                      </div>
+
+                      <div class="payment-amount-wrap">
+                        <div class="payment-amount-label">Amount Due Today</div>
+                        <div class="payment-amount">
+                          ${{ order.total_amount }} {{ order.currency }}
+                        </div>
+                      </div>
+
+                      <div class="payment-helper">
+                        Your payment is encrypted and processed securely by
+                        Flutterwave.
+                      </div>
+
+                      <button
+                        type="button"
+                        id="payButton"
+                        class="btn payment-btn"
+                        onclick="payWithFlutterwave()"
+                      >
+                        Pay Now <i class="fa fa-arrow-right"></i>
+                      </button>
+
+                      <div class="payment-methods">
+                        <span>Card</span>
+                        <span>Bank Transfer</span>
+                        <span>USSD</span>
+                      </div>
+                    </div>
+
+                    <div class="payment-card-bottom">
+                      <div class="mini-note">
+                        <i class="fa fa-shield"></i>
+                        Please confirm your order details before completing
+                        payment.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+    <script>
+      function payWithFlutterwave() {
+        FlutterwaveCheckout({
+          public_key: "{{ flutterwave_public_key }}",
+
+          tx_ref: "{{ order.flutterwave_tx_ref }}",
+
+          amount: "{{ order.total_amount }}",
+
+          currency: "{{ order.currency }}",
+
+          redirect_url: "{{ redirect_url }}",
+
+          payment_options: "card,banktransfer,ussd",
+
+          customer: {
+            email: "{{ order.email }}",
+            phone_number: "{{ order.phone }}",
+            name: "{{ order.first_name }} {{ order.last_name }}",
+          },
+
+          customizations: {
+            title: "FX VPS Pro",
+            description: "Payment for Order {{ order.id }}",
+            logo: "/static/images/logo.png",
+          },
+        });
+      }
+    </script>
+    <!--===== Flathost  Footer =====-->
+
+    <script src="/assets/js/v2/bootstrap.min.js"></script>
+    <script src="/assets/js/v2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      var csrfToken = "3b28fa55efe397b653ad3744d181aff8dc099b79",
+        markdownGuide = "Markdown Guide",
+        locale = "en_GB",
+        saved = "saved",
+        saving = "autosaving";
+    </script>
+    <script src="/assets/js/v2/whmcs.js"></script>
+    <script src="/assets/js/v2/AjaxModal.js"></script>
+
+    <div
+      class="modal system-modal fade"
+      id="modalAjax"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content panel panel-primary">
+          <div class="modal-header panel-heading">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Title</h4>
+          </div>
+          <div class="modal-body panel-body">Loading...</div>
+          <div class="modal-footer panel-footer">
+            <div class="pull-left loader">
+              <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary modal-submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

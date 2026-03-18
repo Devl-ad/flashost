@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/v2/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="https://www.fxvps.pro/favicon.ico" />
+
+    <!-- Styling -->
+    <link href="/assets/css/v2/overrides.css" rel="stylesheet" />
+    <link href="/assets/css/v2/styles.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="/assets/js/v2/jquery.min.js"></script>
+
+    <!-- Flathost Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/flathost.css" />
+
+    <!--==== GOOGLE FONT =======-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/custom.css" />
+
+    <style>
+      .success-page {
+        padding-top: 50px;
+        padding-bottom: 60px;
+      }
+
+      .success-card {
+        background: #fff;
+        border: 1px solid #e9edf3;
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        padding: 42px 34px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .success-card:before {
+        content: "";
+        display: block;
+        height: 6px;
+        width: 100%;
+        background: linear-gradient(90deg, #22c55e, #16a34a);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .success-icon-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 22px;
+      }
+
+      .success-icon {
+        width: 88px;
+        height: 88px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #00b4ff, #16a34a);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 38px;
+        box-shadow: 0 14px 30px rgba(34, 197, 94, 0.28);
+      }
+
+      .success-header h1 {
+        margin: 0 0 10px;
+        font-size: 38px;
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .success-header p {
+        margin: 0 auto;
+        max-width: 640px;
+        font-size: 17px;
+        line-height: 1.7;
+        color: #64748b;
+      }
+
+      .success-body {
+        margin-top: 34px;
+      }
+
+      .success-message {
+        background: #f8fafc;
+        border: 1px solid #eef2f7;
+        border-radius: 16px;
+        padding: 24px 24px 18px;
+        margin-bottom: 28px;
+      }
+
+      .success-message h3 {
+        margin-top: 0;
+        margin-bottom: 14px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .success-steps {
+        margin: 0;
+        padding-left: 20px;
+        color: #334155;
+        line-height: 1.9;
+        font-size: 15px;
+      }
+
+      .success-actions {
+        margin-top: 10px;
+      }
+
+      .success-btn-primary {
+        min-width: 220px;
+        border-radius: 12px;
+        padding: 14px 26px;
+        font-size: 17px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        border: none;
+        box-shadow: 0 12px 24px rgba(34, 197, 94, 0.24);
+      }
+
+      .success-btn-primary:hover,
+      .success-btn-primary:focus {
+        transform: translateY(-1px);
+      }
+
+      .success-btn-secondary {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 15px;
+        color: #475569;
+      }
+
+      @media (max-width: 767px) {
+        .success-page {
+          padding-top: 28px;
+          padding-bottom: 36px;
+        }
+
+        .success-card {
+          padding: 30px 20px;
+          border-radius: 18px;
+        }
+
+        .success-icon {
+          width: 74px;
+          height: 74px;
+          font-size: 30px;
+        }
+
+        .success-header h1 {
+          font-size: 30px;
+          line-height: 1.2;
+        }
+
+        .success-header p {
+          font-size: 15px;
+        }
+
+        .success-message {
+          padding: 18px 18px 14px;
+        }
+
+        .success-message h3 {
+          font-size: 19px;
+        }
+
+        .success-btn-primary {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .success-btn-secondary {
+          display: block;
+          margin-left: 0;
+          margin-top: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--===== FLATHOST NAVIGATION ====/index.php==-->
+
+    <section id="main-body" class="container success-page">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="success-card">
+            <div class="success-icon-wrap">
+              <div class="success-icon">
+                <i class="fa fa-check"></i>
+              </div>
+            </div>
+
+            <div class="success-header text-center">
+              <h1>Payment Successful</h1>
+              <p>
+                Your order has been received and your payment was confirmed
+                successfully.
+              </p>
+            </div>
+
+            <div class="success-body">
+              <div class="success-message">
+                <h3>What happens next?</h3>
+                <ul class="success-steps">
+                  <li>We’ll begin processing your VPS order.</li>
+                  <li>Your setup details will be sent to your email.</li>
+                  <li>Please keep an eye on your inbox for updates.</li>
+                </ul>
+              </div>
+
+              <div class="success-actions text-center">
+                <a
+                  href="/pricing"
+                  class="btn btn-primary btn-lg success-btn-primary"
+                >
+                  Continue Shopping
+                </a>
+                <a href="/" class="btn btn-link success-btn-secondary">
+                  Back to Home
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--===== Flathost  Footer =====-->
+
+    <script src="/assets/js/v2/bootstrap.min.js"></script>
+    <script src="/assets/js/v2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      var csrfToken = "3b28fa55efe397b653ad3744d181aff8dc099b79",
+        markdownGuide = "Markdown Guide",
+        locale = "en_GB",
+        saved = "saved",
+        saving = "autosaving";
+    </script>
+    <script src="/assets/js/v2/whmcs.js"></script>
+    <script src="/assets/js/v2/AjaxModal.js"></script>
+
+    <div
+      class="modal system-modal fade"
+      id="modalAjax"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content panel panel-primary">
+          <div class="modal-header panel-heading">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Title</h4>
+          </div>
+          <div class="modal-body panel-body">Loading...</div>
+          <div class="modal-footer panel-footer">
+            <div class="pull-left loader">
+              <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary modal-submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/v2/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="https://www.fxvps.pro/favicon.ico" />
+
+    <!-- Styling -->
+    <link href="/assets/css/v2/overrides.css" rel="stylesheet" />
+    <link href="/assets/css/v2/styles.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="/assets/js/v2/jquery.min.js"></script>
+
+    <!-- Flathost Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/flathost.css" />
+
+    <!--==== GOOGLE FONT =======-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/custom.css" />
+    <style>
+      .failed-page {
+        padding-top: 50px;
+        padding-bottom: 60px;
+      }
+
+      .failed-card {
+        background: #fff;
+        border: 1px solid #e9edf3;
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        padding: 42px 34px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .failed-card:before {
+        content: "";
+        display: block;
+        height: 6px;
+        width: 100%;
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .failed-icon-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 22px;
+      }
+
+      .failed-icon {
+        width: 88px;
+        height: 88px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 38px;
+        box-shadow: 0 14px 30px rgba(239, 68, 68, 0.28);
+      }
+
+      .failed-header h1 {
+        margin: 0 0 10px;
+        font-size: 38px;
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .failed-header p {
+        margin: 0 auto;
+        max-width: 640px;
+        font-size: 17px;
+        line-height: 1.7;
+        color: #64748b;
+      }
+
+      .failed-body {
+        margin-top: 34px;
+      }
+
+      .failed-message {
+        background: #fff7f7;
+        border: 1px solid #fee2e2;
+        border-radius: 16px;
+        padding: 24px 24px 18px;
+        margin-bottom: 22px;
+      }
+
+      .failed-message h3 {
+        margin-top: 0;
+        margin-bottom: 14px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #0f172a;
+      }
+
+      .failed-steps {
+        margin: 0;
+        padding-left: 20px;
+        color: #334155;
+        line-height: 1.9;
+        font-size: 15px;
+      }
+
+      .failed-order-box {
+        background: #f8fafc;
+        border: 1px solid #eef2f7;
+        border-radius: 16px;
+        padding: 18px 20px;
+        margin-bottom: 26px;
+      }
+
+      .failed-order-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px dashed #e5e7eb;
+        color: #334155;
+      }
+
+      .failed-order-row:last-child {
+        border-bottom: none;
+      }
+
+      .failed-actions {
+        margin-top: 10px;
+      }
+
+      .failed-btn-primary {
+        min-width: 220px;
+        border-radius: 12px;
+        padding: 14px 26px;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .failed-btn-secondary {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 15px;
+        color: #475569;
+      }
+
+      @media (max-width: 767px) {
+        .failed-page {
+          padding-top: 28px;
+          padding-bottom: 36px;
+        }
+
+        .failed-card {
+          padding: 30px 20px;
+          border-radius: 18px;
+        }
+
+        .failed-icon {
+          width: 74px;
+          height: 74px;
+          font-size: 30px;
+        }
+
+        .failed-header h1 {
+          font-size: 30px;
+          line-height: 1.2;
+        }
+
+        .failed-header p {
+          font-size: 15px;
+        }
+
+        .failed-message {
+          padding: 18px 18px 14px;
+        }
+
+        .failed-message h3 {
+          font-size: 19px;
+        }
+
+        .failed-btn-primary {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .failed-btn-secondary {
+          display: block;
+          margin-left: 0;
+          margin-top: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--===== FLATHOST NAVIGATION ====/index.php==-->
+
+    <section id="main-body" class="container failed-page">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="failed-card">
+            <div class="failed-icon-wrap">
+              <div class="failed-icon">
+                <i class="fa fa-times"></i>
+              </div>
+            </div>
+
+            <div class="failed-header text-center">
+              <h1>Payment Failed</h1>
+              <p>
+                We couldn’t confirm your payment. No worries — your order is
+                still saved and you can try again.
+              </p>
+            </div>
+
+            <div class="failed-body">
+              <div class="failed-message">
+                <h3>Possible reasons</h3>
+                <ul class="failed-steps">
+                  <li>The payment was cancelled before completion.</li>
+                  <li>Your bank or payment method declined the transaction.</li>
+                  <li>
+                    The payment verification did not complete successfully.
+                  </li>
+                </ul>
+              </div>
+
+              {% if order %}
+              <div class="failed-order-box">
+                <div class="failed-order-row">
+                  <span>Order ID</span>
+                  <strong>#{{ order.id }}</strong>
+                </div>
+                <div class="failed-order-row">
+                  <span>Amount</span>
+                  <strong
+                    >${{ order.total_amount }} {{ order.currency }}</strong
+                  >
+                </div>
+                <div class="failed-order-row">
+                  <span>Status</span>
+                  <strong>Pending / Failed</strong>
+                </div>
+              </div>
+              {% endif %}
+
+              <div class="failed-actions text-center">
+                {% if order %}
+                <a
+                  href="{% url 'payment_page' order.id %}"
+                  class="btn btn-primary btn-lg failed-btn-primary"
+                >
+                  Try Payment Again
+                </a>
+                {% endif %}
+                <a
+                  href="{% url 'cart' %}"
+                  class="btn btn-link failed-btn-secondary"
+                >
+                  Back to Cart
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--===== Flathost  Footer =====-->
+
+    <script src="/assets/js/v2/bootstrap.min.js"></script>
+    <script src="/assets/js/v2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      var csrfToken = "3b28fa55efe397b653ad3744d181aff8dc099b79",
+        markdownGuide = "Markdown Guide",
+        locale = "en_GB",
+        saved = "saved",
+        saving = "autosaving";
+    </script>
+    <script src="/assets/js/v2/whmcs.js"></script>
+    <script src="/assets/js/v2/AjaxModal.js"></script>
+
+    <div
+      class="modal system-modal fade"
+      id="modalAjax"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content panel panel-primary">
+          <div class="modal-header panel-heading">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Title</h4>
+          </div>
+          <div class="modal-body panel-body">Loading...</div>
+          <div class="modal-footer panel-footer">
+            <div class="pull-left loader">
+              <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary modal-submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

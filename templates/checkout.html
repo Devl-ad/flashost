@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/v2/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="https://www.fxvps.pro/favicon.ico" />
+
+    <!-- Styling -->
+    <link href="/assets/css/v2/overrides.css" rel="stylesheet" />
+    <link href="/assets/css/v2/styles.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="/assets/js/v2/jquery.min.js"></script>
+
+    <!-- Flathost Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/flathost.css" />
+
+    <!--==== GOOGLE FONT =======-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/custom.css" />
+  </head>
+  <body>
+    <!--===== FLATHOST NAVIGATION ======-->
+
+    <section id="main-menu">
+  <nav id="nav" class="navbar navbar-inverse navbar-main" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button
+          type="button"
+          class="navbar-toggle"
+          data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div
+        class="collapse navbar-collapse"
+        id="bs-example-navbar-collapse-1"
+      >
+        <ul class="nav navbar-nav">
+          <li menuItemName="Home" id="Primary_Navbar-Home">
+            <a href="/"> Home </a>
+          </li>
+
+          <li menuItemName="Affiliates" id="Primary_Navbar-Affiliates">
+            <a href="/affiliates/"> Affiliates </a>
+          </li>
+          <li menuItemName="Contact Us" id="Primary_Navbar-Contact_Us">
+            <a href="/contact/"> Contact Us </a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right"></ul>
+      </div>
+    </div>
+  </nav>
+</section>
+
+<section id="main-body" class="container">
+  <div class="row">
+    <div class="col-xs-12 main-content">
+      <script>
+        var statesTab = 10;
+        var stateNotRequired = true;
+      </script>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="/assets/css/v2/all.min.css?v=16837e"
+      />
+      <script
+        type="text/javascript"
+        src="/assets/js/v2/scripts.min.js?v=16837e"
+      ></script>
+
+      <script
+        type="text/javascript"
+        src="/assets/js/v2/StatesDropdown.js"
+      ></script>
+
+      <div id="order-standard_cart">
+        <div class="row">
+          <div class="pull-md-right col-md-9">
+            <div class="header-lined">
+              <h1>Checkout</h1>
+            </div>
+          </div>
+
+          <div class="col-md-3 pull-md-left sidebar hidden-xs hidden-sm">
+            <div menuItemName="Categories" class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <i class="fa fa-shopping-cart"></i>&nbsp; Categories
+                </h3>
+              </div>
+
+              <div class="list-group">
+                <a
+                  menuItemName="FOREX PRO VPS ( Regular)"
+                  href="/pricing"
+                  class="list-group-item"
+                  id="Secondary_Sidebar-Categories-FOREX_PRO_VPS_(_Regular)"
+                >
+                  FOREX PRO VPS ( Regular)
+                </a>
+                <a
+                  menuItemName="PREMIUM &amp; LATENCY OPTIMIZED "
+                  href="/pricing"
+                  class="list-group-item"
+                  id="Secondary_Sidebar-Categories-PREMIUM_&amp;_LATENCY_OPTIMIZED_"
+                >
+                  PREMIUM &amp; LATENCY OPTIMIZED
+                </a>
+                <a
+                  menuItemName="EXCLUSIVE VPS"
+                  href="/pricing/"
+                  class="list-group-item"
+                  id="Secondary_Sidebar-Categories-EXCLUSIVE_VPS"
+                >
+                  EXCLUSIVE VPS
+                </a>
+                <a
+                  menuItemName="DEDICATED SERVER"
+                  href="/pricing/"
+                  class="list-group-item"
+                  id="Secondary_Sidebar-Categories-DEDICATED_SERVER"
+                >
+                  DEDICATED SERVER
+                </a>
+                <a
+                  menuItemName="Custom VPS"
+                  href="/pricing/"
+                  class="list-group-item"
+                  id="Secondary_Sidebar-Categories-Custom_VPS"
+                >
+                  Custom VPS
+                </a>
+              </div>
+            </div>
+
+            <div menuItemName="Actions" class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <i class="fa fa-plus"></i>&nbsp; Actions
+                </h3>
+              </div>
+
+              <div class="list-group">
+                <a
+                  menuItemName="View Cart"
+                  href="{% url 'cart' %}"
+                  class="list-group-item active"
+                  id="Secondary_Sidebar-Actions-View_Cart"
+                >
+                  <i class="fa fa-shopping-cart fa-fw"></i>&nbsp; View Cart
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-9 pull-md-right">
+            <div
+              class="categories-collapsed visible-xs visible-sm clearfix"
+            >
+              <div class="pull-left form-inline">
+                <form method="get" action="{% url 'cart' %}">
+                  <select
+                    name="gid"
+                    onchange="submit()"
+                    class="form-control"
+                  >
+                    <optgroup label="Product Categories">
+                      <option value="1">FOREX PRO VPS ( Regular)</option>
+                      <option value="2">
+                        PREMIUM &amp; LATENCY OPTIMIZED
+                      </option>
+                      <option value="3">EXCLUSIVE VPS</option>
+                      <option value="4">DEDICATED SERVER</option>
+                      <option value="5">Custom VPS</option>
+                    </optgroup>
+                    <optgroup label="Actions">
+                      <option value="viewcart">View Cart</option>
+                    </optgroup>
+                  </select>
+                </form>
+              </div>
+            </div>
+
+            <div class="already-registered clearfix">
+              <p>
+                Please enter your personal details and billing information
+                to checkout.
+              </p>
+            </div>
+
+            {% if error_message %}
+              <div class="alert alert-danger text-center">
+                {{ error_message }}
+              </div>
+            {% endif %}
+
+            <form
+              method="post"
+              action="{% url 'checkout' %}"
+              name="orderfrm"
+              id="frmCheckout"
+            >
+              {% csrf_token %}
+              <input type="hidden" name="submit" value="true" />
+              <input
+                type="hidden"
+                name="custtype"
+                id="inputCustType"
+                value="new"
+              />
+
+              <div id="containerExistingUserSignin" class="hidden">
+                <div class="sub-heading">
+                  <span>Existing Customer Login</span>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group prepend-icon">
+                      <label for="inputLoginEmail" class="field-icon">
+                        <i class="fa fa-envelope"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="loginemail"
+                        id="inputLoginEmail"
+                        class="field"
+                        placeholder="Email Address"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group prepend-icon">
+                      <label for="inputLoginPassword" class="field-icon">
+                        <i class="fa fa-lock"></i>
+                      </label>
+                      <input
+                        type="password"
+                        name="loginpassword"
+                        id="inputLoginPassword"
+                        class="field"
+                        placeholder="Password"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="containerNewUserSignup">
+                <div class="sub-heading">
+                  <span>Personal Information</span>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group prepend-icon">
+                      <label for="inputFirstName" class="field-icon">
+                        <i class="fa fa-user"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="firstname"
+                        id="inputFirstName"
+                        class="field"
+                        placeholder="First Name"
+                        value="{{ form_data.firstname|default:'' }}"
+                        autofocus
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group prepend-icon">
+                      <label for="inputLastName" class="field-icon">
+                        <i class="fa fa-user"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="lastname"
+                        id="inputLastName"
+                        class="field"
+                        placeholder="Last Name"
+                        value="{{ form_data.lastname|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group prepend-icon">
+                      <label for="inputEmail" class="field-icon">
+                        <i class="fa fa-envelope"></i>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="inputEmail"
+                        class="field"
+                        placeholder="Email Address"
+                        value="{{ form_data.email|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group prepend-icon">
+                      <label for="inputPhone" class="field-icon">
+                        <i class="fa fa-phone"></i>
+                      </label>
+                      <input
+                        type="tel"
+                        name="phonenumber"
+                        id="inputPhone"
+                        class="field"
+                        placeholder="Phone Number"
+                        value="{{ form_data.phonenumber|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="sub-heading">
+                  <span>Billing Address</span>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group prepend-icon">
+                      <label for="inputCompanyName" class="field-icon">
+                        <i class="fa fa-building"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="companyname"
+                        id="inputCompanyName"
+                        class="field"
+                        placeholder="Company Name (Optional)"
+                        value="{{ form_data.companyname|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group prepend-icon">
+                      <label for="inputAddress1" class="field-icon">
+                        <i class="fa fa-building-o"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="address1"
+                        id="inputAddress1"
+                        class="field"
+                        placeholder="Street Address"
+                        value="{{ form_data.address1|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group prepend-icon">
+                      <label for="inputAddress2" class="field-icon">
+                        <i class="fa fa-map-marker"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="address2"
+                        id="inputAddress2"
+                        class="field"
+                        placeholder="Street Address 2"
+                        value="{{ form_data.address2|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group prepend-icon">
+                      <label for="inputCity" class="field-icon">
+                        <i class="fa fa-building-o"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="city"
+                        id="inputCity"
+                        class="field"
+                        placeholder="City"
+                        value="{{ form_data.city|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="form-group prepend-icon">
+                      <label
+                        for="inputState"
+                        class="field-icon"
+                        id="inputStateIcon"
+                      >
+                        <i class="fa fa-map-signs"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="state"
+                        id="inputState"
+                        class="field"
+                        placeholder="State"
+                        value="{{ form_data.state|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group prepend-icon">
+                      <label for="inputPostcode" class="field-icon">
+                        <i class="fa fa-certificate"></i>
+                      </label>
+                      <input
+                        type="text"
+                        name="postcode"
+                        id="inputPostcode"
+                        class="field"
+                        placeholder="Postcode"
+                        value="{{ form_data.postcode|default:'' }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group prepend-icon">
+                      <select
+                        name="country"
+                        id="inputCountry"
+                        class="field"
+                      >
+                        <option value="AF" {% if form_data.country == "AF" %}selected{% endif %}>Afghanistan</option>
+                        <option value="AX" {% if form_data.country == "AX" %}selected{% endif %}>Aland Islands</option>
+                        <option value="AL" {% if form_data.country == "AL" %}selected{% endif %}>Albania</option>
+                        <option value="DZ" {% if form_data.country == "DZ" %}selected{% endif %}>Algeria</option>
+                        <option value="AS" {% if form_data.country == "AS" %}selected{% endif %}>American Samoa</option>
+                        <option value="AD" {% if form_data.country == "AD" %}selected{% endif %}>Andorra</option>
+                        <option value="AO" {% if form_data.country == "AO" %}selected{% endif %}>Angola</option>
+                        <option value="AI" {% if form_data.country == "AI" %}selected{% endif %}>Anguilla</option>
+                        <option value="AQ" {% if form_data.country == "AQ" %}selected{% endif %}>Antarctica</option>
+                        <option value="AG" {% if form_data.country == "AG" %}selected{% endif %}>Antigua And Barbuda</option>
+                        <option value="AR" {% if form_data.country == "AR" %}selected{% endif %}>Argentina</option>
+                        <option value="AM" {% if form_data.country == "AM" %}selected{% endif %}>Armenia</option>
+                        <option value="AW" {% if form_data.country == "AW" %}selected{% endif %}>Aruba</option>
+                        <option value="AU" {% if form_data.country == "AU" %}selected{% endif %}>Australia</option>
+                        <option value="AT" {% if form_data.country == "AT" %}selected{% endif %}>Austria</option>
+                        <option value="AZ" {% if form_data.country == "AZ" %}selected{% endif %}>Azerbaijan</option>
+                        <option value="BS" {% if form_data.country == "BS" %}selected{% endif %}>Bahamas</option>
+                        <option value="BH" {% if form_data.country == "BH" %}selected{% endif %}>Bahrain</option>
+                        <option value="BD" {% if form_data.country == "BD" %}selected{% endif %}>Bangladesh</option>
+                        <option value="BB" {% if form_data.country == "BB" %}selected{% endif %}>Barbados</option>
+                        <option value="BY" {% if form_data.country == "BY" %}selected{% endif %}>Belarus</option>
+                        <option value="BE" {% if form_data.country == "BE" %}selected{% endif %}>Belgium</option>
+                        <option value="BZ" {% if form_data.country == "BZ" %}selected{% endif %}>Belize</option>
+                        <option value="BJ" {% if form_data.country == "BJ" %}selected{% endif %}>Benin</option>
+                        <option value="BM" {% if form_data.country == "BM" %}selected{% endif %}>Bermuda</option>
+                        <option value="BT" {% if form_data.country == "BT" %}selected{% endif %}>Bhutan</option>
+                        <option value="BO" {% if form_data.country == "BO" %}selected{% endif %}>Bolivia</option>
+                        <option value="BA" {% if form_data.country == "BA" %}selected{% endif %}>Bosnia And Herzegovina</option>
+                        <option value="BW" {% if form_data.country == "BW" %}selected{% endif %}>Botswana</option>
+                        <option value="BV" {% if form_data.country == "BV" %}selected{% endif %}>Bouvet Island</option>
+                        <option value="BR" {% if form_data.country == "BR" %}selected{% endif %}>Brazil</option>
+                        <option value="IO" {% if form_data.country == "IO" %}selected{% endif %}>British Indian Ocean Territory</option>
+                        <option value="BN" {% if form_data.country == "BN" %}selected{% endif %}>Brunei Darussalam</option>
+                        <option value="BG" {% if form_data.country == "BG" %}selected{% endif %}>Bulgaria</option>
+                        <option value="BF" {% if form_data.country == "BF" %}selected{% endif %}>Burkina Faso</option>
+                        <option value="BI" {% if form_data.country == "BI" %}selected{% endif %}>Burundi</option>
+                        <option value="KH" {% if form_data.country == "KH" %}selected{% endif %}>Cambodia</option>
+                        <option value="CM" {% if form_data.country == "CM" %}selected{% endif %}>Cameroon</option>
+                        <option value="CA" {% if form_data.country == "CA" %}selected{% endif %}>Canada</option>
+                        <option value="CV" {% if form_data.country == "CV" %}selected{% endif %}>Cape Verde</option>
+                        <option value="KY" {% if form_data.country == "KY" %}selected{% endif %}>Cayman Islands</option>
+                        <option value="CF" {% if form_data.country == "CF" %}selected{% endif %}>Central African Republic</option>
+                        <option value="TD" {% if form_data.country == "TD" %}selected{% endif %}>Chad</option>
+                        <option value="CL" {% if form_data.country == "CL" %}selected{% endif %}>Chile</option>
+                        <option value="CN" {% if form_data.country == "CN" %}selected{% endif %}>China</option>
+                        <option value="CX" {% if form_data.country == "CX" %}selected{% endif %}>Christmas Island</option>
+                        <option value="CC" {% if form_data.country == "CC" %}selected{% endif %}>Cocos (Keeling) Islands</option>
+                        <option value="CO" {% if form_data.country == "CO" %}selected{% endif %}>Colombia</option>
+                        <option value="KM" {% if form_data.country == "KM" %}selected{% endif %}>Comoros</option>
+                        <option value="CG" {% if form_data.country == "CG" %}selected{% endif %}>Congo</option>
+                        <option value="CD" {% if form_data.country == "CD" %}selected{% endif %}>Congo, Democratic Republic</option>
+                        <option value="CK" {% if form_data.country == "CK" %}selected{% endif %}>Cook Islands</option>
+                        <option value="CR" {% if form_data.country == "CR" %}selected{% endif %}>Costa Rica</option>
+                        <option value="CI" {% if form_data.country == "CI" %}selected{% endif %}>Cote D'Ivoire</option>
+                        <option value="HR" {% if form_data.country == "HR" %}selected{% endif %}>Croatia</option>
+                        <option value="CU" {% if form_data.country == "CU" %}selected{% endif %}>Cuba</option>
+                        <option value="CW" {% if form_data.country == "CW" %}selected{% endif %}>Curacao</option>
+                        <option value="CY" {% if form_data.country == "CY" %}selected{% endif %}>Cyprus</option>
+                        <option value="CZ" {% if form_data.country == "CZ" %}selected{% endif %}>Czech Republic</option>
+                        <option value="DK" {% if form_data.country == "DK" %}selected{% endif %}>Denmark</option>
+                        <option value="DJ" {% if form_data.country == "DJ" %}selected{% endif %}>Djibouti</option>
+                        <option value="DM" {% if form_data.country == "DM" %}selected{% endif %}>Dominica</option>
+                        <option value="DO" {% if form_data.country == "DO" %}selected{% endif %}>Dominican Republic</option>
+                        <option value="EC" {% if form_data.country == "EC" %}selected{% endif %}>Ecuador</option>
+                        <option value="EG" {% if form_data.country == "EG" %}selected{% endif %}>Egypt</option>
+                        <option value="SV" {% if form_data.country == "SV" %}selected{% endif %}>El Salvador</option>
+                        <option value="GQ" {% if form_data.country == "GQ" %}selected{% endif %}>Equatorial Guinea</option>
+                        <option value="ER" {% if form_data.country == "ER" %}selected{% endif %}>Eritrea</option>
+                        <option value="EE" {% if form_data.country == "EE" %}selected{% endif %}>Estonia</option>
+                        <option value="ET" {% if form_data.country == "ET" %}selected{% endif %}>Ethiopia</option>
+                        <option value="FK" {% if form_data.country == "FK" %}selected{% endif %}>Falkland Islands (Malvinas)</option>
+                        <option value="FO" {% if form_data.country == "FO" %}selected{% endif %}>Faroe Islands</option>
+                        <option value="FJ" {% if form_data.country == "FJ" %}selected{% endif %}>Fiji</option>
+                        <option value="FI" {% if form_data.country == "FI" %}selected{% endif %}>Finland</option>
+                        <option value="FR" {% if form_data.country == "FR" %}selected{% endif %}>France</option>
+                        <option value="GF" {% if form_data.country == "GF" %}selected{% endif %}>French Guiana</option>
+                        <option value="PF" {% if form_data.country == "PF" %}selected{% endif %}>French Polynesia</option>
+                        <option value="TF" {% if form_data.country == "TF" %}selected{% endif %}>French Southern Territories</option>
+                        <option value="GA" {% if form_data.country == "GA" %}selected{% endif %}>Gabon</option>
+                        <option value="GM" {% if form_data.country == "GM" %}selected{% endif %}>Gambia</option>
+                        <option value="GE" {% if form_data.country == "GE" %}selected{% endif %}>Georgia</option>
+                        <option value="DE" {% if form_data.country == "DE" %}selected{% endif %}>Germany</option>
+                        <option value="GH" {% if form_data.country == "GH" %}selected{% endif %}>Ghana</option>
+                        <option value="GI" {% if form_data.country == "GI" %}selected{% endif %}>Gibraltar</option>
+                        <option value="GR" {% if form_data.country == "GR" %}selected{% endif %}>Greece</option>
+                        <option value="GL" {% if form_data.country == "GL" %}selected{% endif %}>Greenland</option>
+                        <option value="GD" {% if form_data.country == "GD" %}selected{% endif %}>Grenada</option>
+                        <option value="GP" {% if form_data.country == "GP" %}selected{% endif %}>Guadeloupe</option>
+                        <option value="GU" {% if form_data.country == "GU" %}selected{% endif %}>Guam</option>
+                        <option value="GT" {% if form_data.country == "GT" %}selected{% endif %}>Guatemala</option>
+                        <option value="GG" {% if form_data.country == "GG" %}selected{% endif %}>Guernsey</option>
+                        <option value="GN" {% if form_data.country == "GN" %}selected{% endif %}>Guinea</option>
+                        <option value="GW" {% if form_data.country == "GW" %}selected{% endif %}>Guinea-Bissau</option>
+                        <option value="GY" {% if form_data.country == "GY" %}selected{% endif %}>Guyana</option>
+                        <option value="HT" {% if form_data.country == "HT" %}selected{% endif %}>Haiti</option>
+                        <option value="HM" {% if form_data.country == "HM" %}selected{% endif %}>Heard Island &amp; Mcdonald Islands</option>
+                        <option value="VA" {% if form_data.country == "VA" %}selected{% endif %}>Holy See (Vatican City State)</option>
+                        <option value="HN" {% if form_data.country == "HN" %}selected{% endif %}>Honduras</option>
+                        <option value="HK" {% if form_data.country == "HK" %}selected{% endif %}>Hong Kong</option>
+                        <option value="HU" {% if form_data.country == "HU" %}selected{% endif %}>Hungary</option>
+                        <option value="IS" {% if form_data.country == "IS" %}selected{% endif %}>Iceland</option>
+                        <option value="IN" {% if form_data.country == "IN" %}selected{% endif %}>India</option>
+                        <option value="ID" {% if form_data.country == "ID" %}selected{% endif %}>Indonesia</option>
+                        <option value="IR" {% if form_data.country == "IR" %}selected{% endif %}>Iran, Islamic Republic Of</option>
+                        <option value="IQ" {% if form_data.country == "IQ" %}selected{% endif %}>Iraq</option>
+                        <option value="IE" {% if form_data.country == "IE" %}selected{% endif %}>Ireland</option>
+                        <option value="IM" {% if form_data.country == "IM" %}selected{% endif %}>Isle Of Man</option>
+                        <option value="IL" {% if form_data.country == "IL" %}selected{% endif %}>Israel</option>
+                        <option value="IT" {% if form_data.country == "IT" %}selected{% endif %}>Italy</option>
+                        <option value="JM" {% if form_data.country == "JM" %}selected{% endif %}>Jamaica</option>
+                        <option value="JP" {% if form_data.country == "JP" %}selected{% endif %}>Japan</option>
+                        <option value="JE" {% if form_data.country == "JE" %}selected{% endif %}>Jersey</option>
+                        <option value="JO" {% if form_data.country == "JO" %}selected{% endif %}>Jordan</option>
+                        <option value="KZ" {% if form_data.country == "KZ" %}selected{% endif %}>Kazakhstan</option>
+                        <option value="KE" {% if form_data.country == "KE" %}selected{% endif %}>Kenya</option>
+                        <option value="KI" {% if form_data.country == "KI" %}selected{% endif %}>Kiribati</option>
+                        <option value="KR" {% if form_data.country == "KR" %}selected{% endif %}>Korea</option>
+                        <option value="KW" {% if form_data.country == "KW" %}selected{% endif %}>Kuwait</option>
+                        <option value="KG" {% if form_data.country == "KG" %}selected{% endif %}>Kyrgyzstan</option>
+                        <option value="LA" {% if form_data.country == "LA" %}selected{% endif %}>Lao People's Democratic Republic</option>
+                        <option value="LV" {% if form_data.country == "LV" %}selected{% endif %}>Latvia</option>
+                        <option value="LB" {% if form_data.country == "LB" %}selected{% endif %}>Lebanon</option>
+                        <option value="LS" {% if form_data.country == "LS" %}selected{% endif %}>Lesotho</option>
+                        <option value="LR" {% if form_data.country == "LR" %}selected{% endif %}>Liberia</option>
+                        <option value="LY" {% if form_data.country == "LY" %}selected{% endif %}>Libyan Arab Jamahiriya</option>
+                        <option value="LI" {% if form_data.country == "LI" %}selected{% endif %}>Liechtenstein</option>
+                        <option value="LT" {% if form_data.country == "LT" %}selected{% endif %}>Lithuania</option>
+                        <option value="LU" {% if form_data.country == "LU" %}selected{% endif %}>Luxembourg</option>
+                        <option value="MO" {% if form_data.country == "MO" %}selected{% endif %}>Macao</option>
+                        <option value="MK" {% if form_data.country == "MK" %}selected{% endif %}>Macedonia</option>
+                        <option value="MG" {% if form_data.country == "MG" %}selected{% endif %}>Madagascar</option>
+                        <option value="MW" {% if form_data.country == "MW" %}selected{% endif %}>Malawi</option>
+                        <option value="MY" {% if form_data.country == "MY" %}selected{% endif %}>Malaysia</option>
+                        <option value="MV" {% if form_data.country == "MV" %}selected{% endif %}>Maldives</option>
+                        <option value="ML" {% if form_data.country == "ML" %}selected{% endif %}>Mali</option>
+                        <option value="MT" {% if form_data.country == "MT" %}selected{% endif %}>Malta</option>
+                        <option value="MH" {% if form_data.country == "MH" %}selected{% endif %}>Marshall Islands</option>
+                        <option value="MQ" {% if form_data.country == "MQ" %}selected{% endif %}>Martinique</option>
+                        <option value="MR" {% if form_data.country == "MR" %}selected{% endif %}>Mauritania</option>
+                        <option value="MU" {% if form_data.country == "MU" %}selected{% endif %}>Mauritius</option>
+                        <option value="YT" {% if form_data.country == "YT" %}selected{% endif %}>Mayotte</option>
+                        <option value="MX" {% if form_data.country == "MX" %}selected{% endif %}>Mexico</option>
+                        <option value="FM" {% if form_data.country == "FM" %}selected{% endif %}>Micronesia, Federated States Of</option>
+                        <option value="MD" {% if form_data.country == "MD" %}selected{% endif %}>Moldova</option>
+                        <option value="MC" {% if form_data.country == "MC" %}selected{% endif %}>Monaco</option>
+                        <option value="MN" {% if form_data.country == "MN" %}selected{% endif %}>Mongolia</option>
+                        <option value="ME" {% if form_data.country == "ME" %}selected{% endif %}>Montenegro</option>
+                        <option value="MS" {% if form_data.country == "MS" %}selected{% endif %}>Montserrat</option>
+                        <option value="MA" {% if form_data.country == "MA" %}selected{% endif %}>Morocco</option>
+                        <option value="MZ" {% if form_data.country == "MZ" %}selected{% endif %}>Mozambique</option>
+                        <option value="MM" {% if form_data.country == "MM" %}selected{% endif %}>Myanmar</option>
+                        <option value="NA" {% if form_data.country == "NA" %}selected{% endif %}>Namibia</option>
+                        <option value="NR" {% if form_data.country == "NR" %}selected{% endif %}>Nauru</option>
+                        <option value="NP" {% if form_data.country == "NP" %}selected{% endif %}>Nepal</option>
+                        <option value="NL" {% if form_data.country == "NL" %}selected{% endif %}>Netherlands</option>
+                        <option value="AN" {% if form_data.country == "AN" %}selected{% endif %}>Netherlands Antilles</option>
+                        <option value="NC" {% if form_data.country == "NC" %}selected{% endif %}>New Caledonia</option>
+                        <option value="NZ" {% if form_data.country == "NZ" %}selected{% endif %}>New Zealand</option>
+                        <option value="NI" {% if form_data.country == "NI" %}selected{% endif %}>Nicaragua</option>
+                        <option value="NE" {% if form_data.country == "NE" %}selected{% endif %}>Niger</option>
+                        <option value="NG" {% if form_data.country == "NG" %}selected{% endif %}>Nigeria</option>
+                        <option value="NU" {% if form_data.country == "NU" %}selected{% endif %}>Niue</option>
+                        <option value="NF" {% if form_data.country == "NF" %}selected{% endif %}>Norfolk Island</option>
+                        <option value="MP" {% if form_data.country == "MP" %}selected{% endif %}>Northern Mariana Islands</option>
+                        <option value="NO" {% if form_data.country == "NO" %}selected{% endif %}>Norway</option>
+                        <option value="OM" {% if form_data.country == "OM" %}selected{% endif %}>Oman</option>
+                        <option value="PK" {% if form_data.country == "PK" %}selected{% endif %}>Pakistan</option>
+                        <option value="PW" {% if form_data.country == "PW" %}selected{% endif %}>Palau</option>
+                        <option value="PS" {% if form_data.country == "PS" %}selected{% endif %}>Palestine, State of</option>
+                        <option value="PA" {% if form_data.country == "PA" %}selected{% endif %}>Panama</option>
+                        <option value="PG" {% if form_data.country == "PG" %}selected{% endif %}>Papua New Guinea</option>
+                        <option value="PY" {% if form_data.country == "PY" %}selected{% endif %}>Paraguay</option>
+                        <option value="PE" {% if form_data.country == "PE" %}selected{% endif %}>Peru</option>
+                        <option value="PH" {% if form_data.country == "PH" %}selected{% endif %}>Philippines</option>
+                        <option value="PN" {% if form_data.country == "PN" %}selected{% endif %}>Pitcairn</option>
+                        <option value="PL" {% if form_data.country == "PL" %}selected{% endif %}>Poland</option>
+                        <option value="PT" {% if form_data.country == "PT" %}selected{% endif %}>Portugal</option>
+                        <option value="PR" {% if form_data.country == "PR" %}selected{% endif %}>Puerto Rico</option>
+                        <option value="QA" {% if form_data.country == "QA" %}selected{% endif %}>Qatar</option>
+                        <option value="RE" {% if form_data.country == "RE" %}selected{% endif %}>Reunion</option>
+                        <option value="RO" {% if form_data.country == "RO" %}selected{% endif %}>Romania</option>
+                        <option value="RU" {% if form_data.country == "RU" %}selected{% endif %}>Russian Federation</option>
+                        <option value="RW" {% if form_data.country == "RW" %}selected{% endif %}>Rwanda</option>
+                        <option value="BL" {% if form_data.country == "BL" %}selected{% endif %}>Saint Barthelemy</option>
+                        <option value="SH" {% if form_data.country == "SH" %}selected{% endif %}>Saint Helena</option>
+                        <option value="KN" {% if form_data.country == "KN" %}selected{% endif %}>Saint Kitts And Nevis</option>
+                        <option value="LC" {% if form_data.country == "LC" %}selected{% endif %}>Saint Lucia</option>
+                        <option value="MF" {% if form_data.country == "MF" %}selected{% endif %}>Saint Martin</option>
+                        <option value="PM" {% if form_data.country == "PM" %}selected{% endif %}>Saint Pierre And Miquelon</option>
+                        <option value="VC" {% if form_data.country == "VC" %}selected{% endif %}>Saint Vincent And Grenadines</option>
+                        <option value="WS" {% if form_data.country == "WS" %}selected{% endif %}>Samoa</option>
+                        <option value="SM" {% if form_data.country == "SM" %}selected{% endif %}>San Marino</option>
+                        <option value="ST" {% if form_data.country == "ST" %}selected{% endif %}>Sao Tome And Principe</option>
+                        <option value="SA" {% if form_data.country == "SA" %}selected{% endif %}>Saudi Arabia</option>
+                        <option value="SN" {% if form_data.country == "SN" %}selected{% endif %}>Senegal</option>
+                        <option value="RS" {% if form_data.country == "RS" %}selected{% endif %}>Serbia</option>
+                        <option value="SC" {% if form_data.country == "SC" %}selected{% endif %}>Seychelles</option>
+                        <option value="SL" {% if form_data.country == "SL" %}selected{% endif %}>Sierra Leone</option>
+                        <option value="SG" {% if form_data.country == "SG" %}selected{% endif %}>Singapore</option>
+                        <option value="SK" {% if form_data.country == "SK" %}selected{% endif %}>Slovakia</option>
+                        <option value="SI" {% if form_data.country == "SI" %}selected{% endif %}>Slovenia</option>
+                        <option value="SB" {% if form_data.country == "SB" %}selected{% endif %}>Solomon Islands</option>
+                        <option value="SO" {% if form_data.country == "SO" %}selected{% endif %}>Somalia</option>
+                        <option value="ZA" {% if form_data.country == "ZA" %}selected{% endif %}>South Africa</option>
+                        <option value="GS" {% if form_data.country == "GS" %}selected{% endif %}>South Georgia And Sandwich Isl.</option>
+                        <option value="ES" {% if form_data.country == "ES" %}selected{% endif %}>Spain</option>
+                        <option value="LK" {% if form_data.country == "LK" %}selected{% endif %}>Sri Lanka</option>
+                        <option value="SD" {% if form_data.country == "SD" %}selected{% endif %}>Sudan</option>
+                        <option value="SR" {% if form_data.country == "SR" %}selected{% endif %}>Suriname</option>
+                        <option value="SJ" {% if form_data.country == "SJ" %}selected{% endif %}>Svalbard And Jan Mayen</option>
+                        <option value="SZ" {% if form_data.country == "SZ" %}selected{% endif %}>Swaziland</option>
+                        <option value="SE" {% if form_data.country == "SE" %}selected{% endif %}>Sweden</option>
+                        <option value="CH" {% if form_data.country == "CH" %}selected{% endif %}>Switzerland</option>
+                        <option value="SY" {% if form_data.country == "SY" %}selected{% endif %}>Syrian Arab Republic</option>
+                        <option value="TW" {% if form_data.country == "TW" %}selected{% endif %}>Taiwan</option>
+                        <option value="TJ" {% if form_data.country == "TJ" %}selected{% endif %}>Tajikistan</option>
+                        <option value="TZ" {% if form_data.country == "TZ" %}selected{% endif %}>Tanzania</option>
+                        <option value="TH" {% if form_data.country == "TH" %}selected{% endif %}>Thailand</option>
+                        <option value="TL" {% if form_data.country == "TL" %}selected{% endif %}>Timor-Leste</option>
+                        <option value="TG" {% if form_data.country == "TG" %}selected{% endif %}>Togo</option>
+                        <option value="TK" {% if form_data.country == "TK" %}selected{% endif %}>Tokelau</option>
+                        <option value="TO" {% if form_data.country == "TO" %}selected{% endif %}>Tonga</option>
+                        <option value="TT" {% if form_data.country == "TT" %}selected{% endif %}>Trinidad And Tobago</option>
+                        <option value="TN" {% if form_data.country == "TN" %}selected{% endif %}>Tunisia</option>
+                        <option value="TR" {% if form_data.country == "TR" %}selected{% endif %}>Turkey</option>
+                        <option value="TM" {% if form_data.country == "TM" %}selected{% endif %}>Turkmenistan</option>
+                        <option value="TC" {% if form_data.country == "TC" %}selected{% endif %}>Turks And Caicos Islands</option>
+                        <option value="TV" {% if form_data.country == "TV" %}selected{% endif %}>Tuvalu</option>
+                        <option value="UG" {% if form_data.country == "UG" %}selected{% endif %}>Uganda</option>
+                        <option value="UA" {% if form_data.country == "UA" %}selected{% endif %}>Ukraine</option>
+                        <option value="AE" {% if form_data.country == "AE" %}selected{% endif %}>United Arab Emirates</option>
+                        <option value="GB" {% if form_data.country == "GB" %}selected{% endif %}>United Kingdom</option>
+                        <option value="US" {% if form_data.country == "US" or not form_data.country %}selected{% endif %}>United States</option>
+                        <option value="UM" {% if form_data.country == "UM" %}selected{% endif %}>United States Outlying Islands</option>
+                        <option value="UY" {% if form_data.country == "UY" %}selected{% endif %}>Uruguay</option>
+                        <option value="UZ" {% if form_data.country == "UZ" %}selected{% endif %}>Uzbekistan</option>
+                        <option value="VU" {% if form_data.country == "VU" %}selected{% endif %}>Vanuatu</option>
+                        <option value="VE" {% if form_data.country == "VE" %}selected{% endif %}>Venezuela</option>
+                        <option value="VN" {% if form_data.country == "VN" %}selected{% endif %}>Viet Nam</option>
+                        <option value="VG" {% if form_data.country == "VG" %}selected{% endif %}>Virgin Islands, British</option>
+                        <option value="VI" {% if form_data.country == "VI" %}selected{% endif %}>Virgin Islands, U.S.</option>
+                        <option value="WF" {% if form_data.country == "WF" %}selected{% endif %}>Wallis And Futuna</option>
+                        <option value="EH" {% if form_data.country == "EH" %}selected{% endif %}>Western Sahara</option>
+                        <option value="YE" {% if form_data.country == "YE" %}selected{% endif %}>Yemen</option>
+                        <option value="ZM" {% if form_data.country == "ZM" %}selected{% endif %}>Zambia</option>
+                        <option value="ZW" {% if form_data.country == "ZW" %}selected{% endif %}>Zimbabwe</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sub-heading">
+                <span>Payment Details</span>
+              </div>
+
+              <div
+                class="alert alert-success text-center large-text"
+                role="alert"
+              >
+                Total Due Today: &nbsp; <strong>${{ total }} USD</strong>
+              </div>
+
+              <div
+                class="alert alert-danger text-center gateway-errors {% if not error_message %}hidden{% endif %}"
+              >
+                {% if error_message %}{{ error_message }}{% endif %}
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="sub-heading">
+                <span>Additional Notes</span>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <textarea
+                      name="notes"
+                      class="field"
+                      rows="4"
+                      placeholder="You can enter any additional notes or information you want included with your order here..."
+                    >{{ form_data.notes|default:'' }}</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <p>
+                  <label class="checkbox-inline">
+                    <input
+                      type="checkbox"
+                      name="accepttos"
+                      id="accepttos"
+                      {% if form_data.accepttos %}checked{% endif %}
+                    />
+                    &nbsp; I have read and agree to the
+                    <a
+                      href="#"
+                      target="_blank"
+                    >Terms of Service</a>
+                  </label>
+                </p>
+
+                <button
+                  type="submit"
+                  id="btnCompleteOrder"
+                  class="btn btn-primary btn-lg"
+                  onclick="this.value = 'Please Wait...'"
+                >
+                  Pay &nbsp;<i class="fa fa-arrow-circle-right"></i>
+                </button>
+              </div>
+            </form>
+
+            <div class="alert alert-warning checkout-security-msg">
+              <i class="fa fa-lock"></i>
+              This order form is provided in a secure environment and to
+              help protect against fraud your current IP address
+              (<strong>{{ user_ip }}</strong>) is being logged.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+</section>
+
+
+
+
+
+ 
+    <!--===== Flathost  Footer =====-->
+
+    <script src="/assets/js/v2/bootstrap.min.js"></script>
+    <script src="/assets/js/v2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      var csrfToken = "3b28fa55efe397b653ad3744d181aff8dc099b79",
+        markdownGuide = "Markdown Guide",
+        locale = "en_GB",
+        saved = "saved",
+        saving = "autosaving";
+    </script>
+    <script src="/assets/js/v2/whmcs.js"></script>
+    <script src="/assets/js/v2/AjaxModal.js"></script>
+
+    <div
+      class="modal system-modal fade"
+      id="modalAjax"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content panel panel-primary">
+          <div class="modal-header panel-heading">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Title</h4>
+          </div>
+          <div class="modal-body panel-body">Loading...</div>
+          <div class="modal-footer panel-footer">
+            <div class="pull-left loader">
+              <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary modal-submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

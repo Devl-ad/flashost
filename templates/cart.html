@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+
+    <!-- Bootstrap -->
+    <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/v2/font-awesome.min.css" rel="stylesheet" />
+    <link rel="icon" href="https://www.fxvps.pro/favicon.ico" />
+
+    <!-- Styling -->
+    <link href="/assets/css/v2/overrides.css" rel="stylesheet" />
+    <link href="/assets/css/v2/styles.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="/assets/js/v2/jquery.min.js"></script>
+
+    <!-- Flathost Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/flathost.css" />
+
+    <!--==== GOOGLE FONT =======-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Custom Styling -->
+    <link rel="stylesheet" href="/assets/css/v2/custom.css" />
+  </head>
+  <body>
+    <!--===== FLATHOST NAVIGATION ====/index.php==-->
+
+    <section id="main-menu">
+      <nav id="nav" class="navbar navbar-inverse navbar-main" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div
+            class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1"
+          >
+            <ul class="nav navbar-nav">
+              <li menuitemname="Home" id="Primary_Navbar-Home">
+                <a href="/"> Home </a>
+              </li>
+
+              <li menuitemname="Affiliates" id="Primary_Navbar-Affiliates">
+                <a href="/affiliates/"> Affiliates </a>
+              </li>
+              <li menuitemname="Contact Us" id="Primary_Navbar-Contact_Us">
+                <a href="/contact/"> Contact Us </a>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right"></ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+
+    <section id="main-body" class="container">
+      <div class="row">
+        <div class="col-xs-12 main-content">
+          <script>
+            var statesTab = 10;
+            var stateNotRequired = true;
+          </script>
+
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/assets/css/v2/all.min.css?v=16837e"
+          />
+          <script
+            type="text/javascript"
+            src="/assets/js/v2/scripts.min.js?v=16837e"
+          ></script>
+
+          <script
+            type="text/javascript"
+            src="/assets/js/v2/StatesDropdown.js"
+          ></script>
+
+          <div id="order-standard_cart">
+            <div class="row">
+              <div class="pull-md-right col-md-9">
+                <div class="header-lined">
+                  <h1>Review &amp; Checkout</h1>
+                </div>
+              </div>
+
+              <div class="col-md-3 pull-md-left sidebar hidden-xs hidden-sm">
+                <div menuitemname="Categories" class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <i class="fa fa-shopping-cart"></i>&nbsp; Categories
+                    </h3>
+                  </div>
+
+                  <div class="list-group">
+                    <a
+                      menuitemname="FOREX PRO VPS ( Regular)"
+                      href="/pricing"
+                      class="list-group-item"
+                      id="Secondary_Sidebar-Categories-FOREX_PRO_VPS_(_Regular)"
+                    >
+                      FOREX PRO VPS ( Regular)
+                    </a>
+                    <a
+                      menuitemname="PREMIUM &amp; LATENCY OPTIMIZED "
+                      href="/pricing"
+                      class="list-group-item"
+                      id="Secondary_Sidebar-Categories-PREMIUM_&amp;_LATENCY_OPTIMIZED_"
+                    >
+                      PREMIUM &amp; LATENCY OPTIMIZED
+                    </a>
+                    <a
+                      menuitemname="EXCLUSIVE VPS"
+                      href="/pricing/"
+                      class="list-group-item"
+                      id="Secondary_Sidebar-Categories-EXCLUSIVE_VPS"
+                    >
+                      EXCLUSIVE VPS
+                    </a>
+                    <a
+                      menuitemname="DEDICATED SERVER"
+                      href="/pricing/"
+                      class="list-group-item"
+                      id="Secondary_Sidebar-Categories-DEDICATED_SERVER"
+                    >
+                      DEDICATED SERVER
+                    </a>
+                    <a
+                      menuitemname="Custom VPS"
+                      href="/pricing/"
+                      class="list-group-item"
+                      id="Secondary_Sidebar-Categories-Custom_VPS"
+                    >
+                      Custom VPS
+                    </a>
+                  </div>
+                </div>
+
+                <div menuitemname="Actions" class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <i class="fa fa-plus"></i>&nbsp; Actions
+                    </h3>
+                  </div>
+
+                  <div class="list-group">
+                    <a
+                      menuitemname="View Cart"
+                      href="{% url 'cart' %}"
+                      class="list-group-item active"
+                      id="Secondary_Sidebar-Actions-View_Cart"
+                    >
+                      <i class="fa fa-shopping-cart fa-fw"></i>&nbsp; View Cart
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-9 pull-md-right">
+                <div
+                  class="categories-collapsed visible-xs visible-sm clearfix"
+                >
+                  <div class="pull-left form-inline">
+                    <form method="get" action="{% url 'cart' %}">
+                      <select
+                        name="gid"
+                        onchange="submit()"
+                        class="form-control"
+                      >
+                        <optgroup label="Product Categories">
+                          <option value="1">FOREX PRO VPS ( Regular)</option>
+                          <option value="2">
+                            PREMIUM &amp; LATENCY OPTIMIZED
+                          </option>
+                          <option value="3">EXCLUSIVE VPS</option>
+                          <option value="4">DEDICATED SERVER</option>
+                          <option value="5">Custom VPS</option>
+                        </optgroup>
+                        <optgroup label="Actions">
+                          <option value="viewcart" selected="">
+                            View Cart
+                          </option>
+                        </optgroup>
+                      </select>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <form method="post" action="{% url 'update_cart' %}">
+                      {% csrf_token %}
+
+                      <div class="view-cart-items-header">
+                        <div class="row">
+                          <div class="col-sm-5 col-xs-7">Product/Options</div>
+                          <div class="col-sm-2 hidden-xs text-center">Qty</div>
+                          <div class="col-sm-4 col-xs-5 text-right">
+                            Price/Cycle
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="view-cart-items">
+                        {% for item in items %}
+                        <div class="item">
+                          <div class="row">
+                            <div class="col-sm-5">
+                              <span class="item-title">
+                                {{ item.package.name }}
+                                <span class="visible-xs-inline">
+                                  <a
+                                    href="{% url 'remove_from_cart' item.package.id %}"
+                                    class="btn btn-link btn-xs btn-remove-from-cart"
+                                  >
+                                    <i class="fa fa-times"></i>
+                                    Remove
+                                  </a>
+                                </span>
+                              </span>
+                              <span class="item-group">
+                                {{ item.package.category }}
+                              </span>
+                              <small>
+                                {% if item.package.ram %}
+                                <!--  -->
+                                &nbsp;» RAM: {{ item.package.ram }}<br />
+                                <!--  -->
+                                {% endif %} {% if item.package.cpu %}
+                                <!--  -->
+                                &nbsp;» CPU: {{ item.package.cpu }}<br />
+                                <!--  -->
+                                {% endif %}
+                                <!--  -->
+                                {% if item.package.disk_space %}
+                                <!--  -->
+                                &nbsp;» Disk Space:
+                                <!--  -->
+                                {{ item.package.disk_space }}<br />
+                                <!--  -->
+                                {% endif %}
+                                <!--  -->
+                                {% if item.package.instances %}
+                                <!--  -->
+                                &nbsp;» Instances:
+                                <!--  -->
+                                {{ item.package.instances }}<br />
+                                <!--  -->
+                                {% endif %}
+                              </small>
+                            </div>
+
+                            <div class="col-sm-2 item-qty">
+                              <input
+                                type="number"
+                                name="qty_{{ item.package.id }}"
+                                value="{{ item.quantity }}"
+                                class="form-control text-center"
+                                min="1"
+                              />
+                              <button type="submit" class="btn btn-xs">
+                                Update
+                              </button>
+                            </div>
+
+                            <div class="col-sm-4 item-price">
+                              <span>${{ item.unit_price }} USD</span>
+                              <span class="cycle">
+                                {% if item.billing_cycle == "1m" %}
+                                <!--  -->
+                                Monthly {% elif item.billing_cycle == "3m" %}
+                                <!--  -->
+                                Quarterly {% elif item.billing_cycle == "6m" %}
+                                <!--  -->
+                                Semi-Annually
+                                <!--  -->
+                                {% elif item.billing_cycle == "12m" %}
+                                <!--  -->
+                                Annually {% elif item.billing_cycle == "24m" %}
+                                <!--  -->
+                                Biennially {% else %}
+                                <!--  -->
+                                {{ item.billing_cycle }}
+                                <!--  -->
+                                {% endif %}
+                              </span>
+                            </div>
+
+                            <div class="col-sm-1 hidden-xs">
+                              <a
+                                href="{% url 'remove_from_cart' item.package.id %}"
+                                class="btn btn-link btn-xs btn-remove-from-cart"
+                              >
+                                <i class="fa fa-times"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        {% empty %}
+                        <div class="item">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <p>Your cart is empty.</p>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+
+                      {% if items %}
+                      <div class="empty-cart">
+                        <a
+                          href="{% url 'empty_cart' %}"
+                          class="btn btn-link btn-xs"
+                          id="btnEmptyCart"
+                        >
+                          <i class="fa fa-trash"></i>
+                          <span>Empty Cart</span>
+                        </a>
+                      </div>
+                      {% endif %}
+                    </form>
+
+                    <div class="view-cart-tabs">
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                          <a
+                            href="#applyPromo"
+                            aria-controls="applyPromo"
+                            role="tab"
+                            data-toggle="tab"
+                            >Apply Promo Code</a
+                          >
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div
+                          role="tabpanel"
+                          class="tab-pane active promo"
+                          id="applyPromo"
+                        >
+                          <form method="post" action="#">
+                            {% csrf_token %}
+                            <div class="form-group prepend-icon">
+                              <label for="cardno" class="field-icon">
+                                <i class="fa fa-ticket"></i>
+                              </label>
+                              <input
+                                type="text"
+                                name="promocode"
+                                id="inputPromotionCode"
+                                class="field"
+                                placeholder="Enter promo code if you have one"
+                                data-sharkid="__1"
+                              />
+                            </div>
+                            <button
+                              type="submit"
+                              name="validatepromo"
+                              class="btn btn-block"
+                              value="Validate Code"
+                            >
+                              Validate Code
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4" id="scrollingPanelContainer">
+                    <div
+                      class="order-summary"
+                      id="orderSummary"
+                      style="margin-top: 0px"
+                    >
+                      <div
+                        class="loader"
+                        id="orderSummaryLoader"
+                        style="display: none"
+                      >
+                        <i class="fa fa-fw fa-refresh fa-spin"></i>
+                      </div>
+                      <h2>Order Summary</h2>
+                      <div class="summary-container">
+                        <div class="subtotal clearfix">
+                          <span class="pull-left">Subtotal</span>
+                          <span id="subtotal" class="pull-right"
+                            >${{ total }} USD</span
+                          >
+                        </div>
+                        <div class="recurring-totals clearfix">
+                          <span class="pull-left">Totals</span>
+                          <span
+                            id="recurring"
+                            class="pull-right recurring-charges"
+                          >
+                            <span id="recurringMonthly">
+                              <span class="cost">${{ total }} USD</span>
+                              Monthly<br />
+                            </span>
+                            <span id="recurringQuarterly" style="display: none">
+                              <span class="cost"></span> Quarterly<br />
+                            </span>
+                            <span
+                              id="recurringSemiAnnually"
+                              style="display: none"
+                            >
+                              <span class="cost"></span> Semi-Annually<br />
+                            </span>
+                            <span id="recurringAnnually" style="display: none">
+                              <span class="cost"></span> Annually<br />
+                            </span>
+                            <span
+                              id="recurringBiennially"
+                              style="display: none"
+                            >
+                              <span class="cost"></span> Biennially<br />
+                            </span>
+                            <span
+                              id="recurringTriennially"
+                              style="display: none"
+                            >
+                              <span class="cost"></span> Triennially<br />
+                            </span>
+                          </span>
+                        </div>
+
+                        <div class="total-due-today total-due-today-padded">
+                          <span id="totalDueToday" class="amt"
+                            >${{ total }} USD</span
+                          >
+                          <span>Total Due Today</span>
+                        </div>
+
+                        <div class="text-right">
+                          {% if items %}
+                          <a
+                            href="{% url 'checkout' %}"
+                            class="btn btn-success btn-lg btn-checkout"
+                            id="checkout"
+                          >
+                            Checkout
+                            <i class="fa fa-arrow-right"></i>
+                          </a>
+                          <br />
+                          {% endif %}
+                          <a
+                            href="/pricing"
+                            class="btn btn-link btn-continue-shopping"
+                            id="continueShopping"
+                          >
+                            Continue Shopping
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </section>
+    <!--===== Flathost  Footer =====-->
+
+    <script src="/assets/js/v2/bootstrap.min.js"></script>
+    <script src="/assets/js/v2/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      var csrfToken = "3b28fa55efe397b653ad3744d181aff8dc099b79",
+        markdownGuide = "Markdown Guide",
+        locale = "en_GB",
+        saved = "saved",
+        saving = "autosaving";
+    </script>
+    <script src="/assets/js/v2/whmcs.js"></script>
+    <script src="/assets/js/v2/AjaxModal.js"></script>
+
+    <div
+      class="modal system-modal fade"
+      id="modalAjax"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content panel panel-primary">
+          <div class="modal-header panel-heading">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Title</h4>
+          </div>
+          <div class="modal-body panel-body">Loading...</div>
+          <div class="modal-footer panel-footer">
+            <div class="pull-left loader">
+              <i class="fa fa-circle-o-notch fa-spin"></i> Loading...
+            </div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary modal-submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
