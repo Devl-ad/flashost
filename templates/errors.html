@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    ```
+    <style>
+      body {
+        margin: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #fff;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .card {
+        background: #1e293b;
+        padding: 40px;
+        border-radius: 16px;
+        text-align: center;
+        max-width: 420px;
+        width: 90%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .icon {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      p {
+        color: #cbd5f5;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 5px;
+      }
+
+      .primary {
+        background: #22c55e;
+        color: #fff;
+      }
+
+      .secondary {
+        background: #334155;
+        color: #fff;
+      }
+
+      .primary:hover {
+        background: #16a34a;
+      }
+
+      .secondary:hover {
+        background: #475569;
+      }
+    </style>
+    ```
+  </head>
+  <body>
+    <div class="card">
+      <div class="icon">⚠️</div>
+      <h1>{{ title }}</h1>
+      <p>{{ message }}</p>
+      <p>{{ sub_message }}</p>
+
+      <a href="/" class="btn primary">Go Home</a>
+      <a href="/checkout/" class="btn secondary">Try Again</a>
+    </div>
+  </body>
+</html>

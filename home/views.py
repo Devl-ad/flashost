@@ -310,42 +310,37 @@ def payment_failed(request, order_id=None):
 
 
 def flutterwave_callback(request):
+    status = request.GET.get("status")
+    tx_ref = request.GET.get("tx_ref")
+    transaction_id = request.GET.get("transaction_id")
 
-    response_data = request.GET.get("response")
-
-    if not response_data:
-        return HttpResponse("Flutterwave response missing.")
-
-    # decode the URL encoded JSON
-    decoded = urllib.parse.unquote(response_data)
-
-    try:
-        data = json.loads(decoded)
-    except Exception:
-        return HttpResponse("Invalid Flutterwave response.")
-
-    print("FLUTTERWAVE DATA:", data)
-
-    status = data.get("status")
-    tx_ref = data.get("txRef")
-    transaction_id = data.get("id")
+    print("CALLBACK PARAMS:", request.GET.dict())
 
     if not tx_ref:
-        return HttpResponse("txRef missing from Flutterwave response.")
+        return render(
+            request,
+            "errors.html",
+            {
+                "title": "Payment Error",
+                "message": "We couldn't verify your payment details.",
+                "sub_message": "This may happen due to a network issue or interrupted redirect.",
+            },
+        )
 
     order = get_object_or_404(Order, flutterwave_tx_ref=tx_ref)
 
-    if status != "successful":
+    # Flutterwave may send completed/successful depending on flow
+    if status not in ["successful", "completed"]:
         order.status = "failed"
         order.save(update_fields=["status"])
         return redirect("payment_failed_with_order", order_id=order.id)
 
-    # mark order paid
+    # Save transaction id
     order.status = "paid"
-    order.flutterwave_transaction_id = str(transaction_id)
+    order.flutterwave_transaction_id = str(transaction_id) if transaction_id else ""
     order.save(update_fields=["status", "flutterwave_transaction_id"])
 
-    # clear cart
+    # Clear cart
     request.session["cart"] = {}
     request.session.modified = True
 
