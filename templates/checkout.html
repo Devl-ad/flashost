@@ -1,3 +1,4 @@
+{% load humanize %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
 
-    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+    <title>Shopping Cart - Server Solutions, FLASHOST</title>
 
     <!-- Bootstrap -->
     <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
@@ -706,7 +707,7 @@
                 class="alert alert-success text-center large-text"
                 role="alert"
               >
-                Total Due Today: &nbsp; <strong>${{ total }} USD</strong>
+                Total Due Today: &nbsp; <strong>&#8358;{{ total|floatformat:0|intcomma }}</strong>
               </div>
 
               <div

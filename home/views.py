@@ -10,6 +10,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Package, Order, OrderItem
 
 
+rate_today = Decimal("1380.50")
+
+
 def payment_page(request, order_id):
     order = get_object_or_404(Order, id=order_id)
 
@@ -18,6 +21,7 @@ def payment_page(request, order_id):
         "payment.html",
         {
             "order": order,
+            "rate_today": rate_today,
             "flutterwave_public_key": settings.FLW_PUBLIC_KEY,
             "redirect_url": request.build_absolute_uri(
                 "/payment/flutterwave/callback/"
@@ -36,6 +40,7 @@ def get_client_ip(request):
 def checkout_page(request):
     cart = request.session.get("cart", {})
     items = []
+    # rate = Decimal("1450.5")
     total = Decimal("0.00")
 
     for package_id, cart_item in cart.items():
@@ -48,7 +53,10 @@ def checkout_page(request):
             continue
 
         subtotal = unit_price * quantity
-        total += subtotal
+
+        subtotal__ = subtotal * rate_today
+
+        total += subtotal__
 
         items.append(
             {
@@ -135,7 +143,7 @@ def checkout_page(request):
             country=country,
             notes=notes,
             total_amount=total,
-            currency="USD",
+            currency="NGN",
             status="pending",
         )
         order.flutterwave_tx_ref = f"order-{order.id}"

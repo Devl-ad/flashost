@@ -1,3 +1,4 @@
+{% load humanize %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
 
-    <title>Shopping Cart - Server Solutions, VPS Pro</title>
+    <title>Shopping Cart - Server Solutions, FLASHOST</title>
 
     <!-- Bootstrap -->
     <link href="/assets/css/v2/bootstrap.min.css" rel="stylesheet" />
@@ -563,16 +564,44 @@
                     </div>
                     {% endfor %}
                   </div>
+                  <style>
+                    .panel-footer.first {
+                      padding: 10px 22px !important;
+                    }
+                    .panel-footer.first .summary-total-amount,
+                    .panel-footer.first .summary-total-labe {
+                      font-size: 15px !important;
+                    }
+                  </style>
 
+                  <div class="panel-footer first summary-footer">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <span
+                          class="summary-total-label"
+                          style="font-size: 15px !important"
+                          >Rate</span
+                        >
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <span class="summary-total-amount">
+                          &#8358;{{ rate_today}}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                   <div class="panel-footer summary-footer">
                     <div class="row">
                       <div class="col-xs-6">
                         <span class="summary-total-label">Total</span>
                       </div>
                       <div class="col-xs-6 text-right">
-                        <span class="summary-total-amount"
-                          >${{ order.total_amount }} {{ order.currency }}</span
-                        >
+                        <span class="summary-total-amount">
+                          <!--  -->
+                          &#8358;
+                          <!--  -->
+                          {{ order.total_amount|floatformat:0|intcomma }}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -658,7 +687,7 @@
                       <div class="payment-amount-wrap">
                         <div class="payment-amount-label">Amount Due Today</div>
                         <div class="payment-amount">
-                          ${{ order.total_amount }} {{ order.currency }}
+                          &#8358;{{ order.total_amount|floatformat:0|intcomma }}
                         </div>
                       </div>
 
@@ -723,7 +752,7 @@
           },
 
           customizations: {
-            title: "FLASHOSTPro",
+            title: "FLASHOST",
             description: "Payment for Order {{ order.id }}",
             logo: "/static/images/logo.png",
           },
