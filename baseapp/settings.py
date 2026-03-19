@@ -120,7 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_URL = "assets/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "assets"),)
-STATIC_ROOT = "/home/primrpdd/public_html/assets/"
+STATIC_ROOT = "/home/flasvjqp/public_html/assets/"
 
 
 LOGIN_REDIRECT = "dashboard"
@@ -145,11 +145,11 @@ EMAIL_USE_SSL = False
 
 # Highly recommended extras
 # must match EMAIL_HOST_USER or a verified alias
-SERVER_EMAIL = "info@primedriven.live"
+SERVER_EMAIL = "info@flashost.online"
 
 # Optional but helps deliverability
-EMAIL_SUBJECT_PREFIX = "primedriven.live"  # makes it look less spammy
+EMAIL_SUBJECT_PREFIX = "flashost.online"  # makes it look less spammy
 
 
-FLW_PUBLIC_KEY = "FLWPUBK_TEST-d3a053e8ef988d8fcb3031c5eeb51821-X"
-FLW_SECRET_KEY = "FLWSECK_TEST-ed5c9edddcdd5db53bdc07a3b264e0ed-X"
+FLW_PUBLIC_KEY = "FLWPUBK-e05c9fcb19ab7bc111b8a0edd3240066-X"
+FLW_SECRET_KEY = "FLWSECK-8aece506e9f6a732d023d141301bff2c-19d04d633a1vt-X"
